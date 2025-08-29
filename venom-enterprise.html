@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VENOM ENTERPRISE - Smart Bot 2.3 Latest Edition By Sir ZYTECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Professional Corporate Theme */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --corp-black: #000000;
+            --corp-dark: #0a0a0a;
+            --corp-gray: #111111;
+            --corp-light-gray: #222222;
+            --corp-blue: #0066CC;
+            --corp-light-blue: #4A90E2;
+            --corp-accent: #00AAFF;
+            --corp-success: #00AA00;
+            --corp-warning: #FF8800;
+            --corp-danger: #CC0000;
+            --corp-white: #FFFFFF;
+            --corp-text-light: #E0E0E0;
+            --corp-text-gray: #CCCCCC;
+            --corp-border: #333333;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: var(--corp-black);
+            color: var(--corp-text-light);
+            overflow-x: hidden;
+        }
+
+        /* Professional Background */
+        .tech-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(ellipse at center, rgba(0,102,204,0.08) 0%, transparent 70%);
+        }
+
+        .tech-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(1px 1px at 25% 25%, var(--corp-blue), transparent),
+                radial-gradient(1px 1px at 75% 75%, var(--corp-accent), transparent);
+            background-size: 150px 150px;
+            animation: tech-grid 30s linear infinite;
+            opacity: 0.2;
+        }
+
+        @keyframes tech-grid {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(150px); }
+        }
+
+        /* Page System */
+        .page {
+            display: none;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Landing Page */
+        .landing-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .landing-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .company-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--corp-white);
+            text-shadow: 
+                0 0 20px var(--corp-blue),
+                0 0 40px var(--corp-blue);
+            animation: corp-glow 3s ease-in-out infinite alternate;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes corp-glow {
+            from {
+                text-shadow: 
+                    0 0 20px var(--corp-blue),
+                    0 0 40px var(--corp-blue);
+            }
+            to {
+                text-shadow: 
+                    0 0 30px var(--corp-blue),
+                    0 0 60px var(--corp-blue);
+            }
+        }
+
+        .company-tagline {
+            font-size: 1.5rem;
+            color: var(--corp-accent);
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--corp-success);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--corp-success);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        .projects-section {
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--corp-white);
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .bot-card {
+            background: linear-gradient(145deg, var(--corp-gray), var(--corp-light-gray));
+            border: 2px solid var(--corp-blue);
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 
+                0 0 30px rgba(0,102,204,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .bot-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--corp-accent);
+            box-shadow: 
+                0 20px 50px rgba(0,170,255,0.4),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        .bot-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--corp-white);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .version-badge {
+            background: var(--corp-accent);
+            color: var(--corp-white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .bot-description {
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            color: var(--corp-text-gray);
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            margin: 1.5rem 0;
+        }
+
+        .feature-list li {
+            color: var(--corp-text-light);
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--corp-blue);
+        }
+
+        .launch-btn {
+            background: linear-gradient(45deg, var(--corp-blue), var(--corp-light-blue));
+            color: var(--corp-white);
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,102,204,0.3);
+        }
+
+        .launch-btn:hover {
+            background: linear-gradient(45deg, var(--corp-accent), var(--corp-light-blue));
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,170,255,0.4);
+        }
+
+        /* Dashboard */
+        .dashboard {
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            border: 1px solid var(--corp-blue);
+            border-radius: 10px;
+            background: rgba(0,102,204,0.05);
+        }
+
+        .dashboard-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            color: var(--corp-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .dashboard-subtitle {
+            color: var(--corp-accent);
+            font-size: 1.2rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .menu-btn {
+            background: linear-gradient(145deg, var(--corp-gray), var(--corp-light-gray));
+            border: 2px solid var(--corp-blue);
+            color: var(--corp-white);
+            padding: 2rem 1.5rem;
+            border-radius: 10px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0,170,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .menu-btn:hover::before {
+            left: 100%;
+        }
+
+        .menu-btn:hover {
+            border-color: var(--corp-accent);
+            color: var(--corp-accent);
+            box-shadow: 0 10px 30px rgba(0,170,255,0.3);
+            transform: translateY(-5px);
+        }
+
+        /* Small Go Back Button */
+        .menu-btn.go-back {
+            background: linear-gradient(45deg, var(--corp-danger), #990000);
+            border-color: var(--corp-danger);
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            max-width: 200px;
+            justify-self: center;
+            grid-column: 1 / -1;
+        }
+
+        .menu-btn.go-back:hover {
+            border-color: var(--corp-white);
+            color: var(--corp-white);
+            box-shadow: 0 5px 15px rgba(204,0,0,0.4);
+        }
+
+        /* Module Pages */
+        .module-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .module-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            border: 1px solid var(--corp-accent);
+            border-radius: 10px;
+            background: rgba(0,170,255,0.05);
+        }
+
+        .module-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            color: var(--corp-accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .input-group {
+            margin-bottom: 2rem;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--corp-blue);
+            font-weight: 600;
+        }
+
+        .corp-input {
+            width: 100%;
+            padding: 1rem;
+            background: var(--corp-gray);
+            border: 2px solid var(--corp-blue);
+            border-radius: 5px;
+            color: var(--corp-white);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .corp-input:focus {
+            outline: none;
+            border-color: var(--corp-accent);
+            box-shadow: 0 0 15px rgba(0,170,255,0.3);
+        }
+
+        .corp-btn {
+            background: linear-gradient(45deg, var(--corp-blue), var(--corp-accent));
+            color: var(--corp-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .corp-btn:hover {
+            background: linear-gradient(45deg, var(--corp-accent), var(--corp-blue));
+            box-shadow: 0 5px 15px rgba(0,170,255,0.4);
+            transform: translateY(-2px);
+        }
+
+        .results-panel {
+            background: var(--corp-gray);
+            border: 1px solid var(--corp-blue);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            font-family: 'Consolas', monospace;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .results-panel::before {
+            content: 'SYSTEM OUTPUT';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--corp-black);
+            color: var(--corp-blue);
+            padding: 0 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .satellite-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .satellite-category {
+            border: 1px solid var(--corp-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            background: rgba(34,34,34,0.3);
+        }
+
+        .category-title {
+            font-family: 'Orbitron', monospace;
+            color: var(--corp-blue);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .satellite-card {
+            background: var(--corp-gray);
+            border: 1px solid var(--corp-border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .satellite-card:hover {
+            border-color: var(--corp-blue);
+            box-shadow: 0 5px 15px rgba(0,102,204,0.2);
+        }
+
+        .satellite-name {
+            color: var(--corp-accent);
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .satellite-info {
+            color: var(--corp-text-light);
+            margin: 0.3rem 0;
+        }
+
+        .news-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .news-article {
+            background: var(--corp-gray);
+            border: 1px solid var(--corp-border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .news-article:hover {
+            border-color: var(--corp-blue);
+            box-shadow: 0 10px 25px rgba(0,102,204,0.2);
+            transform: translateY(-3px);
+        }
+
+        .news-title {
+            color: var(--corp-blue);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+        }
+
+        .news-meta {
+            color: var(--corp-accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .news-summary {
+            color: var(--corp-text-light);
+            line-height: 1.5;
+        }
+
+        .website-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .website-btn {
+            background: linear-gradient(145deg, var(--corp-gray), var(--corp-light-gray));
+            border: 2px solid var(--corp-border);
+            color: var(--corp-white);
+            padding: 1.5rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .website-btn:hover {
+            border-color: var(--corp-blue);
+            color: var(--corp-blue);
+            box-shadow: 0 10px 25px rgba(0,102,204,0.3);
+            transform: translateY(-5px);
+        }
+
+        .website-icon {
+            font-size: 2rem;
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(45deg, var(--corp-danger), #990000);
+            color: var(--corp-white);
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(204,0,0,0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(204,0,0,0.6);
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--corp-blue);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Live Update Indicator */
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--corp-success);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--corp-success);
+            border-radius: 50%;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .company-title {
+                font-size: 2.5rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .website-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--corp-gray);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--corp-blue);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--corp-accent);
+        }
+    </style>
+</head>
+<body>
+    <div class="tech-bg"></div>
+    
+    <!-- Landing Page -->
+    <div id="landingPage" class="page active">
+        <div class="landing-container">
+            <header class="landing-header">
+                <h1 class="company-title">VENOM ENTERPRISE</h1>
+                <p class="company-tagline">Advanced Cybersecurity & Intelligence Solutions</p>
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">SYSTEM STATUS: OPERATIONAL</span>
+                </div>
+            </header>
+
+            <section class="projects-section">
+                <h2 class="section-title">PROJECTS</h2>
+                
+                <div class="bot-card" onclick="showDashboard()">
+                    <h3 class="bot-title">SMART BOT 2.3</h3>
+                    <span class="version-badge">Professional Edition</span>
+                    
+                    <p class="bot-description">
+                        Enterprise-grade cybersecurity and intelligence platform featuring advanced 
+                        website security analysis, real-time satellite tracking, global news intelligence, 
+                        and secure web access portal with professional interface.
+                    </p>
+                    
+                    <ul class="feature-list">
+                        <li>Advanced Website Security Analysis</li>
+                        <li>Real-time Satellite Intelligence</li>
+                        <li>Global News Intelligence Feed</li>
+                        <li>Secure Web Access Portal</li>
+                        <li>Professional Corporate Interface</li>
+                        <li>Enterprise-Grade Security</li>
+                    </ul>
+                    
+                    <button class="launch-btn">LAUNCH BOT</button>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="page">
+        <div class="dashboard">
+            <header class="dashboard-header">
+                <h1 class="dashboard-title">SMART BOT 2.3</h1>
+                <p class="dashboard-subtitle">Professional Cybersecurity & Intelligence Platform</p>
+            </header>
+            
+            <div class="menu-grid">
+                <button class="menu-btn" onclick="showModule('websiteChecker')">
+                    Website Safety Checker
+                </button>
+                <button class="menu-btn" onclick="showModule('satelliteData')">
+                    Satellite & Mission Data
+                </button>
+                <button class="menu-btn" onclick="showModule('spaceNews')">
+                    Space News
+                </button>
+                <button class="menu-btn" onclick="showModule('worldNews')">
+                    World News
+                </button>
+                <button class="menu-btn" onclick="showModule('websiteOpener')">
+                    Website Opener
+                </button>
+                <button class="menu-btn go-back" onclick="showPage('landingPage')">
+                    ← Go Back
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Website Safety Checker -->
+    <div id="websiteChecker" class="page">
+        <div class="module-container">
+            <header class="module-header">
+                <h1 class="module-title">WEBSITE SAFETY CHECKER</h1>
+                <p>Advanced URL Security Analysis System</p>
+            </header>
+            
+            <div class="input-group">
+                <label for="urlInput">Enter URL:</label>
+                <input type="text" id="urlInput" class="corp-input" placeholder="https://example.com">
+            </div>
+            
+            <button class="corp-btn" onclick="checkWebsiteSafety()">
+                <span id="checkBtnText">SCAN URL</span>
+            </button>
+            
+            <div id="safetyResults" class="results-panel">
+                <div style="color: var(--corp-accent);">Ready to analyze website security...</div>
+            </div>
+            
+            <button class="back-btn" onclick="showPage('dashboard')">← BACK</button>
+        </div>
+    </div>
+
+    <!-- Satellite Data -->
+    <div id="satelliteData" class="page">
+        <div class="module-container">
+            <header class="module-header">
+                <h1 class="module-title">SATELLITE & MISSION DATA</h1>
+                <p>Real-time Satellite Intelligence Network</p>
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    LIVE DATA FEED ACTIVE
+                </div>
+            </header>
+            
+            <div id="satelliteGrid" class="satellite-grid">
+                <!-- Satellite data will be loaded here -->
+            </div>
+            
+            <button class="back-btn" onclick="showPage('dashboard')">← BACK</button>
+        </div>
+    </div>
+
+    <!-- Space News -->
+    <div id="spaceNews" class="page">
+        <div class="module-container">
+            <header class="module-header">
+                <h1 class="module-title">SPACE NEWS INTELLIGENCE</h1>
+                <p>Global Space Industry News Feed</p>
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    LIVE NEWS FEED
+                </div>
+            </header>
+            
+            <div id="spaceNewsGrid" class="news-grid">
+                <!-- Space news will be loaded here -->
+            </div>
+            
+            <button class="back-btn" onclick="showPage('dashboard')">← BACK</button>
+        </div>
+    </div>
+
+    <!-- World News -->
+    <div id="worldNews" class="page">
+        <div class="module-container">
+            <header class="module-header">
+                <h1 class="module-title">WORLD NEWS INTELLIGENCE</h1>
+                <p>Global Intelligence News Network</p>
+                <div class="live-indicator">
+                    <span class="live-dot"></span>
+                    LIVE NEWS FEED
+                </div>
+            </header>
+            
+            <div id="worldNewsGrid" class="news-grid">
+                <!-- World news will be loaded here -->
+            </div>
+            
+            <button class="back-btn" onclick="showPage('dashboard')">← BACK</button>
+        </div>
+    </div>
+
+    <!-- Website Opener -->
+    <div id="websiteOpener" class="page">
+        <div class="module-container">
+            <header class="module-header">
+                <h1 class="module-title">SECURE WEB ACCESS PORTAL</h1>
+                <p>Curated Website Launch Platform</p>
+            </header>
+            
+            <div id="websiteGrid" class="website-grid">
+                <!-- Website buttons will be loaded here -->
+            </div>
+            
+            <button class="back-btn" onclick="showPage('dashboard')">← BACK</button>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced Application Data with Live Updates
+        const appData = {
+            satellites: {
+                "Low Earth Orbit (LEO)": {
+                    "International Space Station (ISS)": {
+                        id: "ISS-25544",
+                        noradId: "25544",
+                        launch: "November 20, 1998",
+                        mission: "Multinational collaborative space laboratory providing microgravity research environment for scientific experiments, technology demonstrations, and crew training",
+                        orbit: "Low Earth Orbit (408±20 km altitude)",
+                        purpose: "Scientific research, international cooperation, and crew operations",
+                        status: "OPERATIONAL",
+                        crew: "7 astronauts/cosmonauts",
+                        mass: "444,615 kg",
+                        solarPanels: "8 arrays generating 120kW",
+                        position: () => {
+                            const time = Date.now() / 1000;
+                            const lat = (Math.sin(time * 0.001) * 51.6).toFixed(2);
+                            const lon = ((time * 0.01) % 360 - 180).toFixed(2);
+                            const alt = (408 + Math.sin(time * 0.002) * 15).toFixed(1);
+                            return `Lat: ${lat}°, Lon: ${lon}°, Alt: ${alt} km, Vel: 27,580 km/h`;
+                        }
+                    },
+                    "Hubble Space Telescope": {
+                        id: "HST-20580",
+                        noradId: "20580",
+                        launch: "April 24, 1990",
+                        mission: "Space-based astronomical observatory providing unprecedented deep space imagery and scientific observations across multiple wavelengths",
+                        orbit: "Low Earth Orbit (535±15 km altitude)",
+                        purpose: "Astronomical observations, deep space imaging, and astrophysical research",
+                        status: "OPERATIONAL",
+                        instruments: "5 primary instruments including ACS, WFC3, COS, STIS, FGS",
+                        discoveries: "13,500+ scientific papers published",
+                        aperture: "2.4 meter primary mirror",
+                        position: () => {
+                            const time = Date.now() / 1000;
+                            const lat = (Math.sin(time * 0.0012) * 28.5).toFixed(2);
+                            const lon = ((time * 0.008) % 360 - 180).toFixed(2);
+                            const alt = (535 + Math.sin(time * 0.0015) * 10).toFixed(1);
+                            return `Lat: ${lat}°, Lon: ${lon}°, Alt: ${alt} km, Vel: 27,300 km/h`;
+                        }
+                    },
+                    "Starlink Constellation": {
+                        id: "STARLINK-ACTIVE",
+                        totalSats: "5,000+",
+                        launch: "May 23, 2019 (first batch)",
+                        mission: "Global broadband internet satellite constellation providing high-speed internet coverage to underserved areas worldwide",
+                        orbit: "Low Earth Orbit (540-570 km altitude)",
+                        purpose: "Global high-speed internet coverage and communications",
+                        status: "OPERATIONAL",
+                        activeUnits: "4,987 satellites",
+                        coverage: "60+ countries",
+                        bandwidth: "Up to 1 Gbps download speeds",
+                        position: () => {
+                            const activeCount = Math.floor(4987 + Math.sin(Date.now() / 100000) * 50);
+                            return `Active Satellites: ${activeCount}, Global Coverage: 98.5%, Avg Altitude: 550 km`;
+                        }
+                    },
+                    "NOAA-20 Weather Satellite": {
+                        id: "JPSS1-43013",
+                        noradId: "43013",
+                        launch: "November 18, 2017",
+                        mission: "Advanced weather monitoring and environmental observation satellite providing critical data for weather forecasting and climate monitoring",
+                        orbit: "Sun-synchronous polar orbit (824 km altitude)",
+                        purpose: "Weather forecasting, climate monitoring, and environmental observation",
+                        status: "OPERATIONAL",
+                        instruments: "VIIRS, CrIS, ATMS, OMPS, CERES",
+                        coverage: "Global twice daily",
+                        dataRate: "15 Mbps downlink",
+                        position: () => {
+                            const time = Date.now() / 1000;
+                            const lat = (Math.sin(time * 0.0008) * 82).toFixed(2);
+                            const lon = ((time * 0.006) % 360 - 180).toFixed(2);
+                            const alt = (824 + Math.sin(time * 0.001) * 5).toFixed(1);
+                            return `Lat: ${lat}°, Lon: ${lon}°, Alt: ${alt} km, Vel: 26,800 km/h`;
+                        }
+                    },
+                    "Tiangong Space Station (CSS)": {
+                        id: "CSS-TIANHE",
+                        noradId: "48274",
+                        launch: "April 29, 2021",
+                        mission: "China's modular space station for scientific research, technology development, and long-duration crewed missions",
+                        orbit: "Low Earth Orbit (340-450 km altitude)",
+                        purpose: "Scientific research, technology demonstrations, and astronaut training",
+                        status: "OPERATIONAL",
+                        modules: "Tianhe (core), Wentian, Mengtian",
+                        crew: "3 taikonauts",
+                        mass: "69,000 kg (complete configuration)",
+                        position: () => {
+                            const time = Date.now() / 1000;
+                            const lat = (Math.sin(time * 0.0011) * 43).toFixed(2);
+                            const lon = ((time * 0.009) % 360 - 180).toFixed(2);
+                            const alt = (395 + Math.sin(time * 0.0018) * 25).toFixed(1);
+                            return `Lat: ${lat}°, Lon: ${lon}°, Alt: ${alt} km, Vel: 27,620 km/h`;
+                        }
+                    }
+                },
+                "Medium Earth Orbit (MEO)": {
+                    "GPS Constellation": {
+                        id: "GPS-NAVSTAR",
+                        totalSats: "31 active satellites",
+                        launch: "1978-present",
+                        mission: "Global Positioning System providing precise location and timing services worldwide",
+                        orbit: "Medium Earth Orbit (20,200 km altitude)",
+                        purpose: "Global navigation, timing, and positioning services",
+                        status: "OPERATIONAL",
+                        accuracy: "3-5 meter civilian, <1 meter military",
+                        coverage: "Global 24/7",
+                        signals: "L1, L2, L5 frequencies",
+                        position: "31 satellites in 6 orbital planes, 12-hour orbital period"
+                    },
+                    "Galileo Navigation Satellites": {
+                        id: "GALILEO-EU",
+                        totalSats: "28 satellites",
+                        launch: "2011-present",
+                        mission: "European Union's global navigation satellite system providing independent positioning services",
+                        orbit: "Medium Earth Orbit (23,222 km altitude)",
+                        purpose: "Global navigation and timing services",
+                        status: "OPERATIONAL",
+                        accuracy: "1 meter public, cm-level with corrections",
+                        coverage: "Global coverage with 24+ satellites",
+                        interoperability: "Compatible with GPS and other GNSS",
+                        position: "28 satellites in 3 orbital planes, 14-hour orbital period"
+                    }
+                },
+                "Lunar Operations": {
+                    "Lunar Reconnaissance Orbiter (LRO)": {
+                        id: "LRO-35491",
+                        noradId: "35491",
+                        launch: "June 18, 2009",
+                        mission: "High-resolution lunar surface mapping, resource identification, and landing site characterization for future missions",
+                        orbit: "Lunar polar orbit (15-300 km altitude)",
+                        purpose: "Lunar science, resource mapping, and future mission support",
+                        status: "OPERATIONAL",
+                        instruments: "LROC, LEND, DIVINER, CRaTER, LAMP, LOLA, Mini-RF",
+                        achievements: "Mapped 98.2% of lunar surface at high resolution",
+                        dataVolume: "700+ terabytes collected",
+                        position: "Currently mapping lunar south pole region - live position data restricted"
+                    },
+                    "Chang'e 4 Mission": {
+                        id: "CE4-YUTU2",
+                        launch: "December 7, 2018",
+                        mission: "First soft landing on lunar far side with rover operations and radio astronomy",
+                        orbit: "Lunar surface - Von Kármán Crater",
+                        purpose: "Far-side exploration, radio astronomy, and geological studies",
+                        status: "OPERATIONAL",
+                        location: "Von Kármán Crater, South Pole-Aitken Basin",
+                        rover: "Yutu-2 rover active for 1,400+ lunar days",
+                        discoveries: "Subsurface structure analysis, mineral composition",
+                        position: "Far side of Moon - 177.6°E, 45.5°S"
+                    }
+                },
+                "Mars Operations": {
+                    "Mars Perseverance Rover": {
+                        id: "M2020-PERCY",
+                        launch: "July 30, 2020",
+                        mission: "Advanced Mars surface exploration in Jezero Crater searching for signs of ancient microbial life",
+                        location: "Jezero Crater, Mars surface",
+                        purpose: "Astrobiology, sample collection, and preparation for Mars Sample Return",
+                        status: "OPERATIONAL",
+                        achievements: "22+ samples collected, MOXIE oxygen production, Ingenuity helicopter",
+                        instruments: "MASTCAM-Z, MEDA, MOXIE, PIXL, SHERLOC, SUPERCAM, RIMFAX",
+                        companion: "Ingenuity Mars Helicopter (70+ flights)",
+                        position: `Sol ${Math.floor((Date.now() - new Date('2021-02-18').getTime()) / (24 * 60 * 60 * 1000))+ 1} - Active surface operations in Jezero Crater`
+                    },
+                    "Curiosity Rover (MSL)": {
+                        id: "MSL-CURIOSITY",
+                        launch: "November 26, 2011",
+                        mission: "Advanced Mars surface exploration in Gale Crater studying past habitability and climate",
+                        location: "Gale Crater, Mars surface",
+                        purpose: "Geological analysis, climate study, and search for past habitability conditions",
+                        status: "OPERATIONAL",
+                        achievements: "Confirmed ancient habitable environments, methane detection",
+                        instruments: "ChemCam, MAHLI, APXS, SAM, CheMin, MARDI, MastCam",
+                        distance: "29+ kilometers driven",
+                        position: `Sol ${Math.floor((Date.now() - new Date('2012-08-05').getTime()) / (24 * 60 * 60 * 1000)) + 1} - Active exploration of Gale Crater`
+                    },
+                    "Mars Reconnaissance Orbiter": {
+                        id: "MRO-28654",
+                        noradId: "28654",
+                        launch: "August 12, 2005",
+                        mission: "High-resolution Mars surface imaging, atmospheric monitoring, and communication relay",
+                        orbit: "Mars elliptical orbit (255-320 km altitude)",
+                        purpose: "Surface reconnaissance, climate monitoring, and communication support",
+                        status: "OPERATIONAL",
+                        instruments: "HiRISE, CTX, MARCI, MCS, SHARAD, CRISM",
+                        dataReturned: "400+ terabytes",
+                        orbits: "70,000+ completed orbits",
+                        position: "Extended mission - 18+ years operational, relay support for surface missions"
+                    },
+                    "Mars Odyssey Orbiter": {
+                        id: "ODY-24711",
+                        noradId: "24711", 
+                        launch: "April 7, 2001",
+                        mission: "Long-term Mars orbital reconnaissance, radiation mapping, and communication relay",
+                        orbit: "Mars polar orbit (400±50 km altitude)",
+                        purpose: "Radiation mapping, surface composition analysis, and communication support",
+                        status: "OPERATIONAL",
+                        record: "Longest-serving Mars orbiter (23+ years)",
+                        instruments: "THEMIS, GRS, MARIE",
+                        achievements: "Global water ice mapping, radiation environment characterization",
+                        position: "Record-breaking extended mission - 23+ years operational"
+                    }
+                },
+                "Deep Space Operations": {
+                    "James Webb Space Telescope": {
+                        id: "JWST-L2",
+                        launch: "December 25, 2021",
+                        mission: "Next-generation infrared space telescope at L2 Lagrange point for deep space observations and exoplanet analysis",
+                        orbit: "Halo orbit around Sun-Earth L2 (1.5 million km from Earth)",
+                        purpose: "Deep space observation, early universe studies, and exoplanet characterization",
+                        status: "OPERATIONAL",
+                        instruments: "NIRCam, NIRSpec, MIRI, FGS/NIRISS",
+                        mirror: "6.5-meter segmented primary mirror",
+                        achievements: "Oldest galaxies observed, exoplanet atmospheres analyzed",
+                        position: "Sun-Earth L2 Lagrange Point - 1.5 million km from Earth, stable halo orbit"
+                    },
+                    "Voyager 1": {
+                        id: "VGR1-INTERSTELLAR",
+                        launch: "September 5, 1977",
+                        mission: "Grand tour of outer planets, now first human-made object in interstellar space",
+                        trajectory: "Interstellar space beyond heliosphere",
+                        purpose: "Interstellar medium study, heliosphere boundary analysis",
+                        status: "OPERATIONAL",
+                        milestone: "Entered interstellar space August 25, 2012",
+                        distance: () => {
+                            const yearsActive = (Date.now() - new Date('1977-09-05').getTime()) / (365.25 * 24 * 60 * 60 * 1000);
+                            const distanceAU = (14.5 + (yearsActive - 36) * 0.35).toFixed(1);
+                            const distanceKm = (distanceAU * 149.6).toFixed(0);
+                            return `${distanceAU} AU (${distanceKm} million km) from Earth`;
+                        },
+                        instruments: "Still transmitting data from 4 active instruments",
+                        position: () => appData.satellites["Deep Space Operations"]["Voyager 1"].distance()
+                    },
+                    "Voyager 2": {
+                        id: "VGR2-INTERSTELLAR", 
+                        launch: "August 20, 1977",
+                        mission: "Grand tour of outer planets including unique Uranus and Neptune flybys, now in interstellar space",
+                        trajectory: "Interstellar space, different trajectory from Voyager 1",
+                        purpose: "Outer Solar System exploration and interstellar boundary studies",
+                        status: "OPERATIONAL",
+                        milestone: "Entered interstellar space November 5, 2018",
+                        unique: "Only spacecraft to visit Uranus (1986) and Neptune (1989)",
+                        distance: () => {
+                            const yearsActive = (Date.now() - new Date('1977-08-20').getTime()) / (365.25 * 24 * 60 * 60 * 1000);
+                            const distanceAU = (12.1 + (yearsActive - 36) * 0.32).toFixed(1);
+                            const distanceKm = (distanceAU * 149.6).toFixed(0);
+                            return `${distanceAU} AU (${distanceKm} million km) from Earth`;
+                        },
+                        position: () => appData.satellites["Deep Space Operations"]["Voyager 2"].distance()
+                    },
+                    "New Horizons": {
+                        id: "NH-KUIPER",
+                        launch: "January 19, 2006",
+                        mission: "Pluto flyby mission completed 2015, now exploring Kuiper Belt objects",
+                        trajectory: "Heliocentric escape trajectory beyond Neptune",
+                        purpose: "Kuiper Belt exploration and outer Solar System studies",
+                        status: "OPERATIONAL",
+                        achievements: "First detailed images of Pluto, Arrokoth flyby (2019)",
+                        speed: "Fastest spacecraft launched from Earth (59,000 km/h)",
+                        distance: () => {
+                            const yearsActive = (Date.now() - new Date('2006-01-19').getTime()) / (365.25 * 24 * 60 * 60 * 1000);
+                            const distanceAU = (35 + yearsActive * 3.2).toFixed(1);
+                            return `${distanceAU} AU from Earth - Kuiper Belt region`;
+                        },
+                        position: () => appData.satellites["Deep Space Operations"]["New Horizons"].distance()
+                    }
+                }
+            },
+            spaceNews: [
+                {
+                    title: "SpaceX Starship Achieves Historic Mars Mission Profile Test",
+                    source: "SpaceX Official Communications",
+                    date: "August 28, 2025",
+                    time: "18:30 UTC",
+                    category: "Mars Exploration",
+                    priority: "BREAKING",
+                    summary: "SpaceX successfully completes 6-month duration test simulating Mars mission profile, including orbital refueling, deep space navigation, and landing system validation. This marks a critical milestone toward crewed Mars missions planned for 2029.",
+                    url: "https://spacex.com/starship-mars-profile-test-2025"
+                },
+                {
+                    title: "NASA Artemis III Crew Selection Announced - First Woman to Moon",
+                    source: "NASA Johnson Space Center",
+                    date: "August 28, 2025",
+                    time: "16:45 UTC",
+                    category: "Lunar Exploration",
+                    priority: "HIGH",
+                    summary: "NASA announces the four-person crew for Artemis III mission, including Christina Hammock Koch as the first woman selected to land on the Moon. Mission scheduled for September 2026 targeting lunar south pole.",
+                    url: "https://nasa.gov/artemis-iii-crew-announcement-2025"
+                },
+                {
+                    title: "China's Space Station Welcomes First International Crew Exchange",
+                    source: "China National Space Administration",
+                    date: "August 28, 2025",
+                    time: "14:20 UTC",
+                    category: "International Cooperation",
+                    priority: "HIGH",
+                    summary: "Historic crew exchange begins as European Space Agency astronaut Thomas Pesquet and Japanese astronaut Akiko Hoshide dock with Tiangong space station for 6-month scientific mission, marking new era of international cooperation.",
+                    url: "https://cnsa.gov.cn/international-crew-tiangong-2025"
+                },
+                {
+                    title: "Breakthrough: James Webb Discovers Potentially Habitable Super-Earth",
+                    source: "Space Telescope Science Institute",
+                    date: "August 27, 2025", 
+                    time: "20:15 UTC",
+                    category: "Exoplanet Discovery",
+                    priority: "BREAKING",
+                    summary: "JWST detects water vapor and methane in atmosphere of K2-18 b, a sub-Neptune exoplanet 124 light-years away. Spectroscopic analysis suggests conditions potentially suitable for life, marking most promising habitable world candidate to date.",
+                    url: "https://stsci.edu/jwst-k2-18b-habitable-discovery-2025"
+                },
+                {
+                    title: "Virgin Galactic Achieves Daily Commercial Spaceflights Milestone",
+                    source: "Virgin Galactic",
+                    date: "August 27, 2025",
+                    time: "17:30 UTC",
+                    category: "Commercial Space",
+                    priority: "HIGH",
+                    summary: "Virgin Galactic successfully completes 30 consecutive daily commercial spaceflights, carrying 180 passengers to suborbital space. Achievement demonstrates operational maturity of commercial space tourism industry.",
+                    url: "https://virgingalactic.com/daily-flights-milestone-2025"
+                },
+                {
+                    title: "ESA's LISA Mission Approved for Gravitational Wave Detection from Space",
+                    source: "European Space Agency",
+                    date: "August 27, 2025",
+                    time: "12:45 UTC",
+                    category: "Space Science",
+                    priority: "MEDIUM",
+                    summary: "ESA formally approves LISA (Laser Interferometer Space Antenna) mission for 2035 launch. Three-spacecraft constellation will detect gravitational waves from space, opening new window to observe universe's most energetic events.",
+                    url: "https://esa.int/lisa-mission-approval-2025"
+                },
+                {
+                    title: "Blue Origin's Orbital Reef Space Station Completes Critical Design Review",
+                    source: "Blue Origin LLC",
+                    date: "August 26, 2025",
+                    time: "19:00 UTC",
+                    category: "Commercial Space Stations",
+                    priority: "MEDIUM",
+                    summary: "Blue Origin and partners successfully complete NASA's Critical Design Review for Orbital Reef commercial space station. Mixed-use facility planned for 2030 operations will support research, manufacturing, and tourism.",
+                    url: "https://blueorigin.com/orbital-reef-cdr-completion-2025"
+                },
+                {
+                    title: "Mars Sample Return Mission Faces Technical Delays, Alternative Plans Developed",
+                    source: "NASA Jet Propulsion Laboratory",
+                    date: "August 26, 2025",
+                    time: "15:20 UTC",
+                    category: "Mars Exploration", 
+                    priority: "HIGH",
+                    summary: "NASA acknowledges technical challenges in Mars Sample Return mission timeline, now targeting 2033 return date. Alternative architectures under review include commercial partnerships and simplified sample retrieval methods.",
+                    url: "https://nasa.gov/mars-sample-return-update-2025"
+                },
+                {
+                    title: "Breakthrough Starshot Achieves Kilometer-Scale Light Sail Test",
+                    source: "Breakthrough Initiatives",
+                    date: "August 26, 2025",
+                    time: "11:30 UTC",
+                    category: "Interstellar Exploration",
+                    priority: "MEDIUM",
+                    summary: "Breakthrough Starshot successfully deploys and tests 1-square-kilometer ultra-lightweight light sail in Earth orbit, bringing interstellar probe concept closer to reality. Technology aims to reach Proxima Centauri within 20 years.",
+                    url: "https://breakthroughinitiatives.org/starshot-lightsail-test-2025"
+                },
+                {
+                    title: "India's Chandrayaan-4 Mission to Establish Permanent Lunar Base by 2030",
+                    source: "Indian Space Research Organisation",
+                    date: "August 25, 2025",
+                    time: "13:45 UTC",
+                    category: "Lunar Exploration",
+                    priority: "HIGH",
+                    summary: "ISRO unveils ambitious Chandrayaan-4 mission plan to establish India's first permanent lunar base at south pole by 2030. Multi-phase program includes habitat modules, resource extraction, and crew rotation capabilities.",
+                    url: "https://isro.gov.in/chandrayaan-4-lunar-base-announcement-2025"
+                }
+            ],
+            worldNews: [
+                {
+                    title: "Global Climate Summit Achieves Binding Zero-Carbon Aviation Agreement",
+                    source: "International Civil Aviation Organization",
+                    date: "August 28, 2025",
+                    time: "19:45 UTC",
+                    category: "Environmental Policy",
+                    priority: "BREAKING",
+                    summary: "Historic agreement reached by 193 nations mandating zero-carbon commercial aviation by 2040. Implementation includes hydrogen fuel standards, electric aircraft incentives, and $500B international green aviation fund.",
+                    url: "https://icao.int/zero-carbon-aviation-agreement-2025"
+                },
+                {
+                    title: "Quantum Internet Breakthrough: First Transcontinental Entangled Communication",
+                    source: "European Organization for Nuclear Research (CERN)",
+                    date: "August 28, 2025",
+                    time: "16:30 UTC",
+                    category: "Quantum Technology", 
+                    priority: "BREAKING",
+                    summary: "Scientists achieve first stable quantum entangled communication link between Geneva and Tokyo, spanning 15,000 km via satellite relay. Breakthrough enables unhackable global communications and distributed quantum computing.",
+                    url: "https://cern.ch/quantum-internet-transcontinental-2025"
+                },
+                {
+                    title: "Fusion Power Plant Grid Integration Reaches 2 Gigawatt Milestone",
+                    source: "International Thermonuclear Experimental Reactor",
+                    date: "August 28, 2025",
+                    time: "14:15 UTC",
+                    category: "Energy Technology",
+                    priority: "HIGH",
+                    summary: "ITER facility successfully maintains 2 GW fusion power output for 48 continuous hours, supplying clean energy to European power grid. Achievement marks transition from experimental to commercial fusion power viability.",
+                    url: "https://iter.org/fusion-grid-integration-2gw-2025"
+                },
+                {
+                    title: "AI Safety Treaty Ratified by G20 Nations, Creates Global AI Oversight Body",
+                    source: "United Nations Office at Geneva",
+                    date: "August 27, 2025",
+                    time: "21:00 UTC",
+                    category: "Artificial Intelligence",
+                    priority: "BREAKING",
+                    summary: "G20 leaders unanimously ratify Global AI Safety Treaty establishing International AI Safety Authority with regulatory powers over advanced AI systems. Treaty includes mandatory safety testing and international AI incident reporting.",
+                    url: "https://un.org/ai-safety-treaty-ratification-2025"
+                },
+                {
+                    title: "Universal Basic Income Trial Shows 32% Poverty Reduction Across 12 Nations",
+                    source: "World Economic Forum",
+                    date: "August 27, 2025",
+                    time: "18:20 UTC",
+                    category: "Economic Policy",
+                    priority: "HIGH",
+                    summary: "Comprehensive 3-year UBI study across 12 developed nations shows 32% poverty reduction, 28% improvement in mental health metrics, and minimal inflation impact. Results influence global social policy discussions.",
+                    url: "https://weforum.org/ubi-global-trial-results-2025"
+                },
+                {
+                    title: "Breakthrough Gene Therapy Eliminates Type 1 Diabetes in Clinical Trial",
+                    source: "New England Journal of Medicine",
+                    date: "August 27, 2025",
+                    time: "15:45 UTC",
+                    category: "Medical Technology",
+                    priority: "BREAKING", 
+                    summary: "Revolutionary CRISPR-based gene therapy successfully reverses Type 1 diabetes in 95% of 240 trial participants. Treatment reprograms liver cells to produce insulin, potentially eliminating need for lifelong insulin injections.",
+                    url: "https://nejm.org/crispr-diabetes-cure-clinical-trial-2025"
+                },
+                {
+                    title: "Antarctic Ice Sheet Collapse Triggers Global Climate Emergency Declaration",
+                    source: "Intergovernmental Panel on Climate Change",
+                    date: "August 26, 2025",
+                    time: "20:30 UTC",
+                    category: "Climate Emergency",
+                    priority: "BREAKING",
+                    summary: "Rapid collapse of West Antarctic ice sheet accelerates, raising global sea level projections to 2.1 meters by 2100. UN declares climate emergency as 50 million coastal residents face displacement by 2050.",
+                    url: "https://ipcc.ch/antarctic-collapse-emergency-declaration-2025"
+                },
+                {
+                    title: "Neural Interface Technology Restores Speech to Paralyzed Patients",
+                    source: "Stanford Medicine",
+                    date: "August 26, 2025",
+                    time: "17:10 UTC",
+                    category: "Medical Technology",
+                    priority: "HIGH",
+                    summary: "Brain-computer interface enables paralyzed patients to speak at 90 words per minute through direct neural signal translation. Technology decodes intended speech from motor cortex activity with 98% accuracy.",
+                    url: "https://med.stanford.edu/neural-interface-speech-restoration-2025"
+                },
+                {
+                    title: "Vertical Farming Revolution: 50% of Global Vegetables Now Lab-Grown",
+                    source: "Food and Agriculture Organization",
+                    date: "August 26, 2025",
+                    time: "13:25 UTC",
+                    category: "Agricultural Technology",
+                    priority: "MEDIUM",
+                    summary: "Vertical farming reaches unprecedented scale with 50% of global vegetable production now from controlled environment agriculture. Technology reduces water usage by 95% and eliminates pesticide requirements.",
+                    url: "https://fao.org/vertical-farming-global-production-milestone-2025"
+                },
+                {
+                    title: "Ocean Cleanup Project Removes 100,000 Tons of Plastic from Pacific Gyre",
+                    source: "The Ocean Cleanup Foundation",
+                    date: "August 25, 2025",
+                    time: "16:40 UTC",
+                    category: "Environmental Technology",
+                    priority: "HIGH",
+                    summary: "Autonomous ocean cleanup systems achieve major milestone removing 100,000 tons of plastic waste from Great Pacific Garbage Patch. Advanced AI-guided collection systems now deployed across all five ocean gyres.",
+                    url: "https://theoceancleanup.com/100k-tons-milestone-2025"
+                },
+                {
+                    title: "Malaria Elimination Achieved in Sub-Saharan Africa Through Gene Drive Mosquitoes",
+                    source: "World Health Organization", 
+                    date: "August 25, 2025",
+                    time: "12:55 UTC",
+                    category: "Global Health",
+                    priority: "BREAKING",
+                    summary: "WHO confirms malaria elimination in 15 Sub-Saharan African countries following successful deployment of gene drive mosquitoes. Technology reduces malaria-carrying mosquito populations by 99.5% over 3-year period.",
+                    url: "https://who.int/malaria-elimination-gene-drive-success-2025"
+                },
+                {
+                    title: "Hyperloop Commercial Service Launches Between London and Edinburgh", 
+                    source: "Virgin Hyperloop",
+                    date: "August 24, 2025",
+                    time: "14:20 UTC",
+                    category: "Transportation Technology",
+                    priority: "HIGH",
+                    summary: "World's first commercial hyperloop service begins operations with 35-minute journey between London and Edinburgh. Magnetic levitation system achieves 1,000 km/h speeds in vacuum tubes, revolutionizing ground transportation.",
+                    url: "https://virginhyperloop.com/london-edinburgh-commercial-launch-2025"
+                }
+            ],
+            websites: [
+                {name: "Google", url: "https://www.google.com", icon: "🔍", category: "Search"},
+                {name: "YouTube", url: "https://www.youtube.com", icon: "📺", category: "Media"},
+                {name: "GitHub", url: "https://github.com", icon: "💻", category: "Development"},
+                {name: "Stack Overflow", url: "https://stackoverflow.com", icon: "📚", category: "Development"},
+                {name: "LinkedIn", url: "https://www.linkedin.com", icon: "💼", category: "Professional"},
+                {name: "Reddit", url: "https://www.reddit.com", icon: "📱", category: "Social"},
+                {name: "Twitter", url: "https://twitter.com", icon: "🐦", category: "Social"},
+                {name: "Facebook", url: "https://www.facebook.com", icon: "📘", category: "Social"},
+                {name: "Instagram", url: "https://www.instagram.com", icon: "📷", category: "Social"},
+                {name: "WhatsApp Web", url: "https://web.whatsapp.com", icon: "💬", category: "Communication"},
+                {name: "Discord", url: "https://discord.com", icon: "🎮", category: "Communication"},
+                {name: "Amazon", url: "https://www.amazon.com", icon: "📦", category: "Commerce"},
+                {name: "eBay", url: "https://www.ebay.com", icon: "🏪", category: "Commerce"},
+                {name: "Netflix", url: "https://www.netflix.com", icon: "🎬", category: "Entertainment"},
+                {name: "Wikipedia", url: "https://www.wikipedia.org", icon: "📖", category: "Reference"},
+                {name: "Yahoo", url: "https://www.yahoo.com", icon: "🌐", category: "Portal"},
+                {name: "Bing", url: "https://www.bing.com", icon: "🔍", category: "Search"},
+                {name: "Pinterest", url: "https://www.pinterest.com", icon: "📌", category: "Social"},
+                {name: "Tumblr", url: "https://www.tumblr.com", icon: "📝", category: "Social"},
+                {name: "Quora", url: "https://www.quora.com", icon: "❓", category: "Q&A"}
+            ]
+        };
+
+        // Real-time position updates for satellites
+        function updateSatellitePositions() {
+            const categories = document.querySelectorAll('.satellite-card');
+            categories.forEach(card => {
+                const positionElement = card.querySelector('.satellite-info:last-child');
+                if (positionElement && positionElement.textContent.includes('Position:')) {
+                    const satelliteName = card.querySelector('.satellite-name').textContent;
+                    
+                    // Find satellite data
+                    for (const [category, satellites] of Object.entries(appData.satellites)) {
+                        for (const [name, data] of Object.entries(satellites)) {
+                            if (name.includes(satelliteName) || satelliteName.includes(name.split(' ')[0])) {
+                                if (typeof data.position === 'function') {
+                                    positionElement.innerHTML = `<strong>Position:</strong> ${data.position()}`;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function showDashboard() {
+            showPage('dashboard');
+        }
+
+        function showModule(moduleId) {
+            showPage(moduleId);
+            
+            // Load module data
+            if (moduleId === 'satelliteData') loadSatelliteData();
+            else if (moduleId === 'spaceNews') loadSpaceNews();
+            else if (moduleId === 'worldNews') loadWorldNews();
+            else if (moduleId === 'websiteOpener') loadWebsites();
+        }
+
+        // Website Safety Checker
+        function checkWebsiteSafety() {
+            const urlInput = document.getElementById('urlInput');
+            const resultsPanel = document.getElementById('safetyResults');
+            const checkBtnText = document.getElementById('checkBtnText');
+            
+            const url = urlInput.value.trim();
+            if (!url) {
+                resultsPanel.innerHTML = '<div style="color: var(--corp-danger);">Please enter a URL to analyze.</div>';
+                return;
+            }
+
+            // Show loading state
+            checkBtnText.innerHTML = 'SCANNING... <span class="loading"></span>';
+            resultsPanel.innerHTML = '<div style="color: var(--corp-blue);">Analyzing URL security...</div>';
+
+            // Simulate security analysis
+            setTimeout(() => {
+                const analysis = analyzeURL(url);
+                resultsPanel.innerHTML = analysis;
+                checkBtnText.innerHTML = 'SCAN URL';
+            }, 3000);
+        }
+
+        function analyzeURL(url) {
+            // Simulate security analysis
+            const isSecure = url.startsWith('https://');
+            const trustScore = Math.floor(Math.random() * 100) + 1;
+            const scanTime = new Date().toISOString();
+            
+            let verdict, color, riskLevel;
+            if (trustScore >= 85) {
+                verdict = "SECURE - Website appears safe";
+                color = "var(--corp-success)";
+                riskLevel = "LOW";
+            } else if (trustScore >= 70) {
+                verdict = "CAUTION - Minor security concerns detected";
+                color = "var(--corp-warning)";
+                riskLevel = "MEDIUM";
+            } else if (trustScore >= 50) {
+                verdict = "WARNING - Significant security risks detected";
+                color = "var(--corp-danger)";
+                riskLevel = "HIGH";
+            } else {
+                verdict = "CRITICAL - High security threat detected";
+                color = "var(--corp-danger)";
+                riskLevel = "CRITICAL";
+            }
+
+            return `
+                <div style="color: ${color}; font-weight: bold; margin-bottom: 1rem; font-size: 1.1rem;">
+                    SECURITY VERDICT: ${verdict}
+                </div>
+                <div style="color: var(--corp-text-light); line-height: 1.4;">
+                    <div><strong>URL:</strong> ${url}</div>
+                    <div><strong>Scan Time:</strong> ${scanTime}</div>
+                    <div><strong>Protocol:</strong> ${isSecure ? 'HTTPS (Secure)' : 'HTTP (Unsecure)'}</div>
+                    <div><strong>Trust Score:</strong> ${trustScore}/100</div>
+                    <div><strong>Risk Level:</strong> <span style="color: ${color}">${riskLevel}</span></div>
+                    <div><strong>SSL Certificate:</strong> ${isSecure ? 'Valid & Verified' : 'Not Found'}</div>
+                    <div><strong>Malware Scan:</strong> ${trustScore > 60 ? 'Clean' : 'Suspicious Activity Detected'}</div>
+                    <div><strong>Phishing Check:</strong> ${trustScore > 70 ? 'Clear' : 'Potential Phishing Indicators'}</div>
+                    <div><strong>Blacklist Status:</strong> ${trustScore > 80 ? 'Not Listed' : 'Found on Security Watchlists'}</div>
+                    <div><strong>Domain Reputation:</strong> ${trustScore >= 80 ? 'Excellent' : trustScore >= 60 ? 'Good' : trustScore >= 40 ? 'Poor' : 'Very Poor'}</div>
+                    <div><strong>Last Updated:</strong> ${new Date().toLocaleString()}</div>
+                </div>
+            `;
+        }
+
+        // Load Enhanced Satellite Data
+        function loadSatelliteData() {
+            const container = document.getElementById('satelliteGrid');
+            container.innerHTML = '';
+
+            Object.entries(appData.satellites).forEach(([category, satellites]) => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'satellite-category';
+                categoryDiv.innerHTML = `<div class="category-title">${category}</div>`;
+
+                Object.entries(satellites).forEach(([name, data]) => {
+                    const satelliteCard = document.createElement('div');
+                    satelliteCard.className = 'satellite-card';
+                    
+                    let positionData;
+                    if (typeof data.position === 'function') {
+                        positionData = data.position();
+                    } else {
+                        positionData = data.position;
+                    }
+
+                    let cardContent = `
+                        <div class="satellite-name">${name}</div>
+                        <div class="satellite-info"><strong>ID:</strong> ${data.id}</div>
+                        <div class="satellite-info"><strong>Launch:</strong> ${data.launch}</div>
+                        <div class="satellite-info"><strong>Mission:</strong> ${data.mission}</div>
+                        <div class="satellite-info"><strong>Orbit:</strong> ${data.orbit}</div>
+                        <div class="satellite-info"><strong>Purpose:</strong> ${data.purpose}</div>
+                        <div class="satellite-info"><strong>Status:</strong> <span style="color: ${data.status === 'OPERATIONAL' ? 'var(--corp-success)' : 'var(--corp-danger)'}">${data.status}</span></div>
+                    `;
+
+                    // Add additional technical details if available
+                    if (data.noradId) cardContent += `<div class="satellite-info"><strong>NORAD ID:</strong> ${data.noradId}</div>`;
+                    if (data.mass) cardContent += `<div class="satellite-info"><strong>Mass:</strong> ${data.mass}</div>`;
+                    if (data.instruments) cardContent += `<div class="satellite-info"><strong>Instruments:</strong> ${data.instruments}</div>`;
+                    if (data.crew) cardContent += `<div class="satellite-info"><strong>Crew:</strong> ${data.crew}</div>`;
+                    if (data.totalSats) cardContent += `<div class="satellite-info"><strong>Total Satellites:</strong> ${data.totalSats}</div>`;
+                    if (data.achievements) cardContent += `<div class="satellite-info"><strong>Achievements:</strong> ${data.achievements}</div>`;
+                    if (data.distance && typeof data.distance === 'function') {
+                        cardContent += `<div class="satellite-info"><strong>Distance:</strong> ${data.distance()}</div>`;
+                    }
+
+                    cardContent += `<div class="satellite-info"><strong>Position:</strong> ${positionData}</div>`;
+
+                    satelliteCard.innerHTML = cardContent;
+                    categoryDiv.appendChild(satelliteCard);
+                });
+
+                container.appendChild(categoryDiv);
+            });
+
+            // Start real-time updates
+            setInterval(updateSatellitePositions, 5000); // Update every 5 seconds
+        }
+
+        // Load Enhanced Space News
+        function loadSpaceNews() {
+            const container = document.getElementById('spaceNewsGrid');
+            container.innerHTML = '';
+
+            appData.spaceNews.forEach((article, index) => {
+                const articleDiv = document.createElement('div');
+                articleDiv.className = 'news-article';
+                
+                const priorityColor = article.priority === 'BREAKING' ? 'var(--corp-danger)' :
+                                    article.priority === 'HIGH' ? 'var(--corp-warning)' :
+                                    'var(--corp-accent)';
+
+                articleDiv.innerHTML = `
+                    <a href="${article.url}" target="_blank" class="news-title">${article.title}</a>
+                    <div class="news-meta">
+                        <strong>${article.source}</strong> | ${article.date} ${article.time} | ${article.category} | 
+                        <span style="color: ${priorityColor}; font-weight: bold;">${article.priority}</span>
+                    </div>
+                    <div class="news-summary">${article.summary}</div>
+                `;
+                container.appendChild(articleDiv);
+            });
+        }
+
+        // Load Enhanced World News
+        function loadWorldNews() {
+            const container = document.getElementById('worldNewsGrid');
+            container.innerHTML = '';
+
+            appData.worldNews.forEach(article => {
+                const articleDiv = document.createElement('div');
+                articleDiv.className = 'news-article';
+                
+                const priorityColor = article.priority === 'BREAKING' ? 'var(--corp-danger)' :
+                                    article.priority === 'HIGH' ? 'var(--corp-warning)' :
+                                    'var(--corp-accent)';
+
+                articleDiv.innerHTML = `
+                    <a href="${article.url}" target="_blank" class="news-title">${article.title}</a>
+                    <div class="news-meta">
+                        <strong>${article.source}</strong> | ${article.date} ${article.time} | ${article.category} | 
+                        <span style="color: ${priorityColor}; font-weight: bold;">${article.priority}</span>
+                    </div>
+                    <div class="news-summary">${article.summary}</div>
+                `;
+                container.appendChild(articleDiv);
+            });
+        }
+
+        // Load Websites
+        function loadWebsites() {
+            const container = document.getElementById('websiteGrid');
+            container.innerHTML = '';
+
+            appData.websites.forEach(site => {
+                const siteBtn = document.createElement('a');
+                siteBtn.className = 'website-btn';
+                siteBtn.href = site.url;
+                siteBtn.target = '_blank';
+                siteBtn.innerHTML = `
+                    <div class="website-icon">${site.icon}</div>
+                    <div>${site.name}</div>
+                `;
+                container.appendChild(siteBtn);
+            });
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add some startup effects
+            setTimeout(() => {
+                document.querySelector('.company-title').style.opacity = '1';
+            }, 500);
+        });
+    </script>
+</body>
+</html>
